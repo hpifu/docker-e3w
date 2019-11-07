@@ -1,0 +1,23 @@
+version: "3.5"
+services:
+  e3w:
+    hostname: e3w
+    image: soyking/e3w:latest
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    # ports:
+    #   - "8080:8080"
+    volumes:
+      - "/var/docker/e3w/conf/config.ini:/app/conf/config.default.ini"
+    networks:
+      - e3wnet
+      - etcdnet
+
+networks:
+  e3wnet:
+    name: e3wnet
+  etcdnet:
+    external: true
+    name: etcdnet
