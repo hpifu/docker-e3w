@@ -12,12 +12,8 @@ services:
     volumes:
       - "/var/docker/e3w/conf/config.ini:/app/conf/config.default.ini"
     networks:
-      - e3wnet
-      - etcdnet
-
+      - online
 networks:
-  e3wnet:
-    name: e3wnet
-  etcdnet:
+  online:
     external: true
-    name: etcdnet
+    name: online
